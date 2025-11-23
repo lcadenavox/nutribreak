@@ -1,6 +1,9 @@
 package com.nutribreak.service;
 
+import java.util.Locale;
+
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
 import com.nutribreak.dto.SuggestionRequestDTO;
@@ -13,14 +16,20 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SuggestionService {
 
+    private final MessageSource messageSource;
+
     @Cacheable(value = "suggestions", key = "#req.mood + '-' + #req.energy + '-' + #req.workMode + '-' + #req.screenTimeMinutes + '-' + #req.language")
     public SuggestionResponseDTO generate(SuggestionRequestDTO req) {
-        String content = fallback();
+        Locale locale = "pt".equalsIgnoreCase(req.getLanguage()) ? new Locale("pt") : Locale.ENGLISH;
+        String content = messageSource.getMessage("suggestion.default", null, locale);
         BreakType breakType = pickBreakType(req.getEnergy(), req.getMood(), req.getScreenTimeMinutes());
+        String mealIdea = getMealIdea(locale);
+        String breakTypeName = getBreakTypeName(breakType, locale);
+        
         return SuggestionResponseDTO.builder()
             .suggestionText(content)
-            .recommendedBreakType(breakType)
-            .recommendedMealIdea("Fruit, nuts and water")
+            .recommendedBreakType(breakTypeName)
+            .recommendedMealIdea(mealIdea)
             .build();
     }
 
@@ -31,7 +40,23 @@ public class SuggestionService {
         return BreakType.MICRO;
     }
 
-    private String fallback() {
-        return "Take a short hydration + stretch break and have a balanced snack (fruits + nuts).";
+    private String getMealIdea(Locale locale) {
+        if (locale.getLanguage().equals("pt")) {
+            return "Frutas, castanhas e água";
+        }
+        return "Fruit, nuts and water";
+    }
+
+    private String getBreakTypeName(BreakType type, Locale locale) {
+        if (locale.getLanguage().equals("pt")) {
+            return switch(type) {
+                case MICRO -> "Micropause";
+                case STRETCH -> "Alongamento";
+                case HYDRATION -> "Hidratação";
+                case MEAL -> "Refeição";
+                case FOCUS_RESET -> "Resetar Foco";
+            };
+        }
+        return type.name();
     }
 }

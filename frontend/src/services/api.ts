@@ -25,32 +25,32 @@ export interface BreakRecordDTO { id?: number; breakType: string; startedAt?: st
 export interface SuggestionRequestDTO { mood?: number; energy?: number; workMode?: string; screenTimeMinutes?: number; language?: string; }
 export interface SuggestionResponseDTO { suggestionText: string; recommendedBreakType: string; recommendedMealIdea: string; }
 
-export const fetchUsers = async (client = createClient(), page = 0, size = 20) => {
+export const fetchUsers = async (client: ReturnType<typeof createClient>, page = 0, size = 20) => {
   const res = await client.get(`/api/users`, { params: { page, size } });
   return res.data.content as UserDTO[];
 };
 
-export const fetchMeals = async (client = createClient(), page = 0, size = 20) => {
+export const fetchMeals = async (client: ReturnType<typeof createClient>, page = 0, size = 20) => {
   const res = await client.get(`/api/meals`, { params: { page, size } });
   return res.data.content as MealDTO[];
 };
 
-export const fetchBreaks = async (client = createClient(), page = 0, size = 20) => {
+export const fetchBreaks = async (client: ReturnType<typeof createClient>, page = 0, size = 20) => {
   const res = await client.get(`/api/breaks`, { params: { page, size } });
   return res.data.content as BreakRecordDTO[];
 };
 
-export const createMeal = async (meal: MealDTO, client = createClient()) => {
+export const createMeal = async (meal: MealDTO, client: ReturnType<typeof createClient>) => {
   const res = await client.post(`/api/meals`, meal);
   return res.data as MealDTO;
 };
 
-export const createBreak = async (br: BreakRecordDTO, client = createClient()) => {
+export const createBreak = async (br: BreakRecordDTO, client: ReturnType<typeof createClient>) => {
   const res = await client.post(`/api/breaks`, br);
   return res.data as BreakRecordDTO;
 };
 
-export const getSuggestion = async (req: SuggestionRequestDTO, client = createClient()) => {
+export const getSuggestion = async (req: SuggestionRequestDTO, client: ReturnType<typeof createClient>) => {
   const res = await client.post(`/api/suggestions`, req);
   return res.data as SuggestionResponseDTO;
 };

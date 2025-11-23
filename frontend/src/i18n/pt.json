@@ -20,5 +20,11 @@
   "form.lang": "Idioma",
   "btn.add": "Adicionar",
   "break.type": "Tipo de Pausa",
+  "break.duration": "Duração (min)",
+  "break.micro": "Micropause",
+  "break.stretch": "Alongamento",
+  "break.meal": "Refeição",
+  "break.hydration": "Hidratação",
+  "break.focus_reset": "Resetar Foco",
   "meal.placeholder": "Nova refeição"
 }

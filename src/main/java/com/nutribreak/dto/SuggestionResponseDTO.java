@@ -1,11 +1,14 @@
 package com.nutribreak.dto;
 
-import com.nutribreak.model.BreakType;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class SuggestionResponseDTO {
     private String suggestionText;
-    private BreakType recommendedBreakType;
+    private String recommendedBreakType;
     private String recommendedMealIdea;
 }

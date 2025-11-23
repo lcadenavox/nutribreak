@@ -20,5 +20,11 @@
   "form.lang": "Language",
   "btn.add": "Add",
   "break.type": "Break Type",
+  "break.duration": "Duration (min)",
+  "break.micro": "Micro",
+  "break.stretch": "Stretch",
+  "break.meal": "Meal",
+  "break.hydration": "Hydration",
+  "break.focus_reset": "Focus Reset",
   "meal.placeholder": "New meal"
 }
