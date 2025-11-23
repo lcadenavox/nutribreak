@@ -1,0 +1,9 @@
+import { jsx as _jsx } from "react/jsx-runtime";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './pages/App';
+import './i18n/config';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/custom.css';
+createRoot(document.getElementById('root')).render(_jsx(React.StrictMode, { children: _jsx(BrowserRouter, { children: _jsx(App, {}) }) }));
