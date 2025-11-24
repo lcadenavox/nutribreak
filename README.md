@@ -275,3 +275,7 @@ Usuário não logado
 Chave de tradução inexistente
 
 Alguns textos ainda estão fixos no código
+
+Leonardo Cadena - RM557528
+Gustavo - rm555708
+Alice Teixeira Caldeira - RM556293
