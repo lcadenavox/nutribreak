@@ -89,9 +89,9 @@ Certifique-se de configurar corretamente:
 
 ---
 
-### 2. Rodar o Backend
+⚙️ Execução do Backend
 
-#### 🔹 **Windows (PowerShell / CMD)**
+### 🔹 Windows (PowerShell / CMD)
 ```bash
 mvnw.cmd spring-boot:run
 🔹 Linux / Mac
@@ -160,7 +160,7 @@ POST	/api/meals
 PUT	/api/meals/{id}
 DELETE	/api/meals/{id}
 
-Exemplo de payload:
+Exemplo de payload
 json
 Copiar código
 {
@@ -180,9 +180,19 @@ POST	/api/suggestions	Sugestões baseadas no estado do usuário
 User
 Campos principais:
 
-id, name, email, role
+id
 
-workMode, mood, energy
+name
+
+email
+
+role
+
+workMode
+
+mood
+
+energy
 
 screenTimeMinutes
 
@@ -204,11 +214,13 @@ Opcional — usado para publicar eventos como criação de refeições.
 
 Se RabbitMQ não estiver ativo:
 
-EventPublisher fica null e não quebra a aplicação.
+EventPublisher ficará null
+
+A aplicação não quebra
 
 Configuração padrão:
 
-Porta: 5672
+Porta 5672
 
 Ajuste credenciais e filas em:
 
@@ -219,16 +231,16 @@ application.properties
 🌍 Internacionalização (i18n)
 Idiomas disponíveis:
 
-🇧🇷 Português (pt.json)
+🇧🇷 Português — pt.json
 
-🇺🇸 Inglês (en.json)
+🇺🇸 Inglês — en.json
 
 Arquivos:
 
 bash
 Copiar código
 frontend/src/i18n/
-Componente para troca de idioma:
+Troca de idioma:
 
 bash
 Copiar código
@@ -242,7 +254,9 @@ src/test/java/com/nutribreak/UserServiceTests.java
 Frontend
 Se configurado:
 
-Vitest / Jest
+Vitest
+
+Jest
 
 ⚠ Problemas Comuns
 ❌ 401 / 403 em /api/*
@@ -250,7 +264,7 @@ Token ausente
 
 Usuário não autenticado
 
-Verificar o header Authorization
+Verificar header Authorization
 
 ❌ Erro 500 ao criar refeição
 Payload incorreto (name em vez de items)
@@ -260,4 +274,4 @@ Usuário não logado
 ❌ Placeholders aparecendo
 Chave de tradução inexistente
 
-Alguns placeholders ainda são textos fixos na página
+Alguns textos ainda estão fixos no código
